@@ -1,0 +1,22 @@
+<html>
+    <head>
+    <script>
+        window.onload = async () => {
+            const response = await fetch("/moisture");
+            const moisture = await response.json();
+            const elem = document.createElement("p");
+            elem.innerHTML = "A: " + moisture[0] + "%<br>B: " + moisture[1] + "%<br>C: " + moisture[2] + "%";
+            document.body.appendChild(elem);
+        }
+    </script>
+    </head>
+    <body>
+        <h1>Hello and welcome to my RP2040 running an async webserver!</h1>
+        <form action="/water" method="post">
+        <input name="volume" value="20"/>
+        <input type="submit" name="pump" value="Water A"/>
+        <input type="submit" name="pump" value="Water B"/>
+        <input type="submit" name="pump" value="Water C"/>
+        </form>
+    </body>
+</html>
